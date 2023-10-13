@@ -1,31 +1,39 @@
-'''Implement a class Player that represents a cricket player.The Player class should have a
-method called play() which prints "The player is playing criket. Derive two classes, Batsman and
-Bowler, from the player class. Override the play() method in each derive class to print "The batman
-is batting" and "The bowler is bowling", respectively. Write a program to create object of both the
-Batman and Bowler classes and call the play() method for each object.'''
+'''
+Implement a function called sort_students that takes a list of student objects as input and sort the
+list based on their CGPA (Cumulative Grade Point Average) in descending order. Each student object
+has the following attributes: name (string), roll_number (string), and cgpa (float). Test the function
+with different input lists of students.
+'''
+
+class Student:
+
+  def __init__(self, name, roll_number, cgpa):
+    self.name = name
+    self.roll_number = roll_number
+    self.cgpa = cgpa
 
 
-# Define the base class Player
-class Player:
-    def play(self):
-        print("The player is playing cricket.")
-    
-# Define the derived class Batman
-class Batsman(Player):
-    def play(self):
-        print("The batsman is batting.")
+def sort_students(student_list):
+  # Sort the list of students in descending order of CGPA
+  sorted_students = sorted(student_list,
+                           key=lambda student: student.cgpa,
+                           reverse=True)
+  # Syntax - lambda arg:exp
+  return sorted_students
 
-# Define the derived class Bowler
-class Bowler(Player):
-    def play(self):
-        print("The bowler is bowling.")
-    
-# create objects of Batsman are Bowler classes
-batsman = Batsman()
-bowler = Bowler()
 
-# Call the play() mathod for each object
-batsman.play()
-bowler.play()
-  
+# Example usage:
+students = [
+    Student("Shakira", "A123", 7.8),
+    Student("Saras", "A124", 8.9),
+    Student("Shalini", "A125", 9.1),
+    Student("Yamini", "A126", 9.9),
+]
 
+sorted_students = sort_students(students)
+
+# Print the sorted list of students
+for student in sorted_students:
+  print("Name: {}, Roll Number: {}, CGPA: {}".format(student.name,
+                                                                   student.roll_number,
+                                                  student.cgpa))
